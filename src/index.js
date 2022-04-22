@@ -5,12 +5,14 @@ const dbConnect = require("./configs/db")
 const app = express();
 
 const authController = require("./controller/auth.controller")
+const discussionGroupController = require("./controller/discussionGroup.controller")
 
 app.use(express.json())
 app.use(express.urlencoded())
 app.use(cors())
 
 app.use("/auth", authController);
+app.use("/groups", discussionGroupController)
 
 
 app.listen(process.env.PORT||2345, async ()=>{
