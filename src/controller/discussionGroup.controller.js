@@ -29,7 +29,7 @@ router.get("", async (req,res)=>{
 //Route to get all meeting particular to a book
 router.get("/book/:name", async (req,res)=>{
     try{
-        const groups = await Group.find({bookName:req.params.name}).sort({createdAt:-1}).populate("members").populate().lean().exec()
+        const groups = await Group.find({bookName:req.params.name}).sort({createdAt:-1}).populate("members").populate("createdBy").lean().exec()
         return res.status(200).send(groups);
     }
     catch(er){
