@@ -4,10 +4,13 @@ const cors = require("cors")
 const dbConnect = require("./configs/db")
 const app = express();
 
+const authController = require("./controller/auth.controller")
+
 app.use(express.json())
 app.use(express.urlencoded())
 app.use(cors())
 
+app.use("/auth", authController);
 
 
 app.listen(process.env.PORT||2345, async ()=>{
@@ -20,3 +23,4 @@ app.listen(process.env.PORT||2345, async ()=>{
     }
     console.log("listening on port 2345")
 })
+//https://book-club-server-hackathon.herokuapp.com/ <- deployed on
