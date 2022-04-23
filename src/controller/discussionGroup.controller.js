@@ -17,7 +17,7 @@ router.post("", async (req,res)=>{
 //Route to get all meetings.
 router.get("", async (req,res)=>{
     try{
-        const groups = await Group.find().sort({createdAt:-1}).lean().exec()
+        const groups = await Group.find().sort({createdAt:-1}).populate("members").populate("createdBy").lean().exec()
         return res.status(200).send(groups)
 
     }
